@@ -2,8 +2,10 @@
 {% load static %}
 {% block content %}
 
+{% comment "" %}
 	<section class="banner">
 		<div class="container">
+			
 			<div class="banner-img">
 				<a href="blog-single.html"><img src=" {% static 'app/images/fashion/bg-banner-2.jpg'%}" alt="" class="img-fluid w-100"></a>
 			</div>
@@ -37,7 +39,7 @@
 		</div>
 	</section>
 
-
+{% endcomment %}
 
 
 
@@ -71,13 +73,12 @@
 						</div>
 					</article>
 
-
-
+					{% for article in get_all_articles %}
 					<div class="mb-4 post-list border-bottom pb-4">
 						<div class="row no-gutters">
 							<div class="col-md-5">
 								<a class="post-thumb " href="blog-single.html">
-									<img src="{% static 'app/images/fashion/img-1.jpg'%}" alt="" class="img-fluid w-100">
+									<img src="{{article.picture.url}}" alt="" class="img-fluid w-100">
 								</a>
 							</div>
 
@@ -86,7 +87,7 @@
 									<div class="meta-cat">
 										<span class="letter-spacing cat-name font-extra text-uppercase font-sm">Explore</span>
 									</div>
-									<h3 class="post-title mt-2"><a href="blog-single.html">Launch a New space</a></h3>
+									<h3 class="post-title mt-2"><a href="blog-single.html">{{article.titre}}</a></h3>
 
 									<div class="post-meta">
 										<ul class="list-inline">
@@ -98,14 +99,14 @@
 										</ul>
 									</div>
 									<div class="post-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Magnam nesciunt architecto quaerat
-											necessitatibus tenetur ratione eius numquam!</p>
+										{{article.libele | safe  }}
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
+					{% endfor %}
+					{% comment "" %}
 					<div class="mb-4 post-list border-bottom pb-4">
 						<div class="row no-gutters">
 							<div class="col-md-5">
@@ -172,6 +173,7 @@
 							</div>
 						</div>
 					</div>
+
 
 					<div class="mb-4 post-list border-bottom pb-4">
 						<div class="row no-gutters">
@@ -272,7 +274,7 @@
 							</div>
 						</div>
 					</div>
-
+					{% endcomment %}
 
 
 
@@ -288,19 +290,20 @@
 				<div class="col-lg-4 col-md-8 col-sm-12 col-xs-12">
 					<div class="sidebar sidebar-right">
 						<div class="sidebar-wrap mt-5 mt-lg-0">
+							
 							<div class="sidebar-widget about mb-5 text-center p-3">
 								<div class="about-author">
 									<img src="{% static 'app/images/author.jpg'%}" alt="" class="img-fluid">
 								</div>
-								<h4 class="mb-0 mt-4">Liam Mason</h4>
+								<h4 class="mb-0 mt-4">Bediakon</h4>
 								<p>Travel Blogger</p>
 								<p>I'm Liam, last year I decided to quit my job and travel the world. You can follow my journey on this
 									blog!</p>
 								<img src="{% static 'app/images/liammason.png'%}" alt="" class="img-fluid">
 							</div>
-
+							
 							<div class="sidebar-widget follow mb-5 text-center">
-								<h4 class="text-center widget-title">Follow Me</h4>
+								<h4 class="text-center widget-title">Vous pouvez me suivre</h4>
 								<div class="follow-socials">
 									<a href="#"><i class="ti-facebook"></i></a>
 									<a href="#"><i class="ti-twitter"></i></a>
@@ -366,11 +369,11 @@
 								<input type="text" class="form-control" placeholder="Email Address">
 								<a href="#" class="btn btn-primary d-block mt-3">Sign Up</a>
 							</div>
-
+							{% comment "" %}
 							<div class="sidebar-widget sidebar-adv mb-5">
 								<a href="#"><img src="{% static 'app/images/sidebar-banner3.png'%}" alt="" class="img-fluid w-100"></a>
 							</div>
-
+							{% endcomment %}
 						</div>
 					</div>
 				</div>
